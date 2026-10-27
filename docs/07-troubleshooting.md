@@ -28,6 +28,7 @@ montado. Cada um tem o sintoma exato do log, a causa e a correção.
 10. [Avisos do Dynamic Scavenging (81 classnames)](#10)
 11. [`SCRIPT (E)` que são inofensivos](#11)
 12. [Servidor fecha sozinho durante o boot](#12)
+13. [**Nenhuma ação funciona: porta, água, comida**](#13)
 
 ---
 
@@ -491,6 +492,66 @@ O processo desaparece entre 1 e 10 minutos de boot, sem erro de script.
 | Antivírus bloqueando o `.exe` | log do Defender | exclusão para `C:\DayZServer` |
 | OneDrive sincronizando PBO | pasta dentro do OneDrive | mova para `C:\DayZServer` |
 | `storage_1` travado | último log é de persistência | ver item 3 |
+
+---
+
+<a id="13"></a>
+## 13. Nenhuma ação funciona: porta, água, comida
+
+### Sintoma
+
+O personagem **anda, corre, olha** — mas:
+
+- não abre porta de casa (nem aparece a opção);
+- não bebe água no poço;
+- não come nada do inventário;
+- nada acontece ao segurar **F** perto de qualquer objeto.
+
+Nenhum erro de script no log. É o sintoma mais confuso do DayZ e **quase
+sempre é a mesma causa**.
+
+### Causa
+
+**O cliente está rodando sem os mods** (vanilla) e o servidor com os 39.
+O `PlayerBase` dos dois lados fica diferente, então:
+
+- **movimento** funciona → é previsto pelo cliente;
+- **ações** falham → dependem de confirmação do servidor, que responde num
+  protocolo que o cliente vanilla não conhece.
+
+### Confirmação (10 segundos)
+
+```powershell
+$d = "$env:LOCALAPPDATA\DayZ"
+$log = Get-ChildItem "$d\script_*.log" | Sort LastWriteTime | Select -Last 1
+Select-String $log.FullName -Pattern "Module: "
+```
+
+| Resultado | Significado |
+|---|---|
+| `Game 1267 / World 4450 / Mission 788` | cliente **com** os mods ✅ |
+| `Game 440 / World 2322 / Mission 219` | cliente **vanilla** ❌ — é isso |
+
+No `defines:` do mesmo log, um cliente modado lista os nomes dos mods
+(`Expansion`, `BBP_keybind`, `BasicMapDefine`, ...). O vanilla lista só
+`DAYZ_1_30,PLATFORM_WINDOWS,RELEASE,sakhal,nasdara,DayZ,...`.
+
+### Correção
+
+Use o **`PLAY.bat`** (está em `config/`). Ele monta o `-mod=` com o caminho
+absoluto dos 39 mods e conecta:
+
+```text
+Duplo clique em PLAY.bat
+```
+
+Não basta colocar `-connect=127.0.0.1` nas opções de inicialização da Steam —
+isso conecta **sem mods** e produz exatamente esse bug.
+
+### Se estiver usando o PLAY.bat e continuar igual
+
+1. Confira se algum mod está sem a pasta `addons` (o script avisa `[AVISO]`).
+2. Veja no log do cliente se aparece `Could not load module` ou `Addon`.
 
 ---
 

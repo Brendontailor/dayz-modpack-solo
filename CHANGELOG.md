@@ -6,6 +6,29 @@ Todas as mudanças relevantes do modpack. Formato baseado em
 
 ---
 
+## [1.0.1] — 2026-10-26
+
+### Adicionado
+- **`config/PLAY.bat`** — inicia o **cliente** com os mesmos 39 mods do
+  servidor (lê o `MODS.txt`, caminhos absolutos) e conecta em `127.0.0.1:2302`.
+  Sem ele o cliente sobe vanilla e **nenhuma ação funciona** em jogo.
+- Seção 13 no troubleshooting: "Nenhuma ação funciona: porta, água, comida".
+
+### Alterado (otimização)
+- `ZombieMaxCount`: 700 → **450** (cada zumbi é uma IA com física/rede).
+- `AnimalMaxCount`: 140 → **80**.
+- `SpawnInitial`: 2.000 → **1.500**.
+- `CleanupLifetimeDefault`: 30 s → **20 s**.
+- `START.bat`: encerramento **suave** (`taskkill` sem `/F`, 20 s de espera)
+  antes do forçado — evita save corrompido no reinício de 12 h.
+
+### Notas
+- Em máquina com 16 GB rodando servidor + cliente, a RAM é o gargalo:
+  com 98% em uso as ações cancelam por timeout. Liberar OneDrive/Steam
+  devolve ~5 GB e normaliza o jogo.
+
+---
+
 ## [1.0.0] — 2026-10-26
 
 ### Adicionado

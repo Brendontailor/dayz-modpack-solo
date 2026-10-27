@@ -48,8 +48,12 @@ missões de IA, construção com BaseBuildingPlus e ajustes de performance.
 2. Copie as pastas dos mods para a raiz do servidor como @Nome
 3. Copie config/ do repositório para a raiz do servidor
 4. Aplique o patch do BaseBuildingPlus (tools/patch_bbp.py)
-5. Rode START.bat e conecte em 127.0.0.1:2302
+5. Rode START.bat (servidor) e PLAY.bat (cliente, com os mesmos mods)
 ```
+
+> ⚠️ **Nunca abra o cliente pela Steam direto.** Sem `-mod=`, o cliente roda
+> vanilla e **nenhuma ação funciona** em jogo (porta, água, comida) — você anda
+> mas não interage com nada. Use o `PLAY.bat`.
 
 O passo a passo completo, com comandos e verificação de cada etapa, está em
 **[docs/01-instalacao.md](docs/01-instalacao.md)**.
@@ -62,7 +66,8 @@ O passo a passo completo, com comandos e verificação de cada etapa, está em
 dayz-modpack-solo/
 ├─ config/
 │  ├─ MODS.txt                  ordem oficial dos 39 mods
-│  ├─ START.bat                 launcher (lê MODS.txt)
+│  ├─ START.bat                 servidor (lê MODS.txt)
+│  ├─ PLAY.bat                  cliente com os mesmos mods + connect
 │  ├─ serverDZ.cfg              configuração do servidor
 │  ├─ db/
 │  │  ├─ types.xml              5.719 tipos de loot

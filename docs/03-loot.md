@@ -83,14 +83,14 @@ Remove-Item "C:\DayZServer\mpmissions\dayzOffline.chernarusplus\storage_1\data\t
 
 | Variável | Valor | O que faz |
 |---|---:|---|
-| `SpawnInitial` | **2.000** | Itens criados no primeiro boot |
+| `SpawnInitial` | **1.500** | Itens criados no primeiro boot |
 | `RespawnTypes` | **16** | Tipos repostos por ciclo |
 | `RespawnLimit` | **28** | Máx. de itens repostos por ciclo |
 | `RestartSpawn` | **600** | Segundos entre ciclos de respawn (10 min) |
 | `LootSpawnAvoidance` | **150** | Distância (m) que evita spawnar loot perto de jogador |
-| `ZombieMaxCount` | **700** | Zumbis simultâneos no mapa |
-| `AnimalMaxCount` | **140** | Animais simultâneos |
-| `CleanupLifetimeDefault` | **30** | Itens comuns somem em 30 s após largados |
+| `ZombieMaxCount` | **450** | Zumbis simultâneos no mapa |
+| `AnimalMaxCount` | **80** | Animais simultâneos |
+| `CleanupLifetimeDefault` | **20** | Itens comuns somem em 20 s após largados |
 | `CleanupLifetimeLimit` | **50** | Teto de itens "largados" por célula |
 | `CleanupLifetimeDeadInfected` | **240** | Corpo de zumbi: 4 min |
 | `CleanupLifetimeDeadAnimal` | **600** | Corpo de animal: 10 min |
@@ -100,12 +100,14 @@ Remove-Item "C:\DayZServer\mpmissions\dayzOffline.chernarusplus\storage_1\data\t
 
 ### Por que esses valores
 
-- **2.000 no primeiro spawn** dá um mundo "cheio" sem derrubar o boot.
+- **1.500 no primeiro spawn** dá um mundo "cheio" sem derrubar o boot.
 - **16 tipos / 28 itens a cada 10 min** mantém o loot girando sem enxurrada.
-- **700 zumbis** é o teto que a máquina de teste aguentou com 39 mods
-  (pico de ~4,3 GB de RAM). Em máquina menor, veja
-  [06-performance.md](06-performance.md).
-- **Cleanup agressivo (30 s)** é o que mais ajuda FPS: item largado no chão
+- **450 zumbis** é o teto que a máquina de teste aguentou com o **cliente
+  rodando junto** (era 700, reduzido na otimização de 26/10 — cada zumbi é uma
+  IA completa, com física e rede). Em servidor dedicado sem cliente, pode voltar
+  para 700.
+- **80 animais** (era 140) pelo mesmo motivo: animal também é IA com física.
+- **Cleanup agressivo (20 s)** é o que mais ajuda FPS: item largado no chão
   custa caro.
 
 ---

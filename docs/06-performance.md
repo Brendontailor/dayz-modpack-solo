@@ -27,9 +27,10 @@ DayZServer_x64.exe -config=serverDZ.cfg -port=2302 -profiles=profiles
 
 | Máquina | `-cpuCount` | `-exThreads` | `ZombieMaxCount` | `AnimalMaxCount` |
 |---|---:|---:|---:|---:|
-| 4c/8t, 8 GB | 4 | 5 | 400 | 80 |
-| 6c/12t, 16 GB | 6 | 7 | 600 | 120 |
-| 8c/16t, 16 GB+ | **4–6** | **7** | **700** | **140** |
+| 4c/8t, 8 GB | 4 | 5 | 300 | 60 |
+| 6c/12t, 16 GB | 6 | 7 | 400 | 80 |
+| 8c/16t, 16 GB (servidor + cliente) | **4** | **7** | **450** | **80** |
+| 8c/16t, 16 GB+ (só servidor) | 6 | 7 | 700 | 140 |
 
 > `-cpuCount` maior que o número de núcleos **físicos** piora (contenção).
 > Em CPU com *hyper-threading*, use o número de núcleos reais.
@@ -68,11 +69,44 @@ Module: Mission; loaded  788x files; 1751x classes
 |---|---|---|
 | Nº de mods | Alto (boot e RAM) | desative linhas no `MODS.txt` |
 | Zumbis vivos | Alto (IA + física) | `ZombieMaxCount` no `globals.xml` |
-| Itens no chão | Alto | `CleanupLifetimeDefault: 30` |
+| Itens no chão | Alto | `CleanupLifetimeDefault: 20` |
 | Hordas | Médio (picos) | `ZombiesPerWave`, `MaxAliveEventZombies` |
 | Missões IA | Médio | `Missions_Max_Concurrent: 1` |
 | Chefes on-demand | Baixo | já otimizado (`spawnOnServerStart: false`) |
 | 3ª pessoa em veículo | Baixo | `@Vehicle3PP` |
+| **RAM livre < 1 GB** | **Crítico** | ver seção abaixo |
+
+---
+
+## RAM: o gargalo que faz as ações pararem
+
+Medição real nesta máquina (Ryzen 7 7735HS, 8c/16t, **15,3 GB**):
+
+| Estado | RAM em uso | Efeito em jogo |
+|---|---:|---|
+| Cliente vanilla + servidor + OneDrive + Steam | **98%** (0,2 GB livres) | ações cancelam, tudo trava |
+| Depois de fechar OneDrive/Steam/aba do Task Manager | 66% (5,1 GB livres) | normal |
+
+Com o Windows paginando para o disco, o cliente **anda** (movimento é previsto
+localmente) mas **as ações falham**: abrir porta, beber água e comer dependem de
+confirmação do servidor e são canceladas por timeout antes da resposta chegar.
+
+### Regras práticas
+
+1. **Deixe pelo menos 3 GB livres** antes de abrir o cliente com 39 mods
+   (servidor ~2 GB + cliente com mods ~5 GB).
+2. **Feche o OneDrive durante o jogo** — ele sincroniza a pasta do servidor
+   (15 GB de PBOs) e consome I/O além de RAM.
+3. **Não deixe o servidor dentro do OneDrive.** Mova para `C:\DayZServer`.
+4. Feche abas/janelas do Steam (cada `steamwebhelper` chega a ~500 MB).
+5. Confira antes de jogar:
+
+```powershell
+$os = Get-CimInstance Win32_OperatingSystem
+"livre: {0:N1} GB" -f ($os.FreePhysicalMemory/1MB)
+```
+
+Se estiver abaixo de 3 GB, feche programas antes de conectar.
 
 ---
 

@@ -102,6 +102,11 @@ echo.
 echo (%time%) Reinicio automatico em 12 horas ^(fecha com CTRL+C para parar^).
 timeout /t %restartSeconds% /nobreak
 
+:: encerra de forma suave primeiro (o servidor salva o mundo e sai),
+:: so forca se ele nao responder em 20 s -> evita save corrompido
+echo (%time%) Encerrando servidor (salvando mundo)...
+taskkill /im DayZServer_x64.exe >nul 2>&1
+timeout /t 20 /nobreak >nul
 taskkill /im DayZServer_x64.exe /F >nul 2>&1
 timeout /t 5 /nobreak >nul
 goto start

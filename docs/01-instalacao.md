@@ -97,6 +97,7 @@ Copie o conteúdo de `config/` deste repositório para a raiz do servidor:
 |---|---|
 | `config/MODS.txt` | `C:\DayZServer\MODS.txt` |
 | `config/START.bat` | `C:\DayZServer\START.bat` |
+| `config/PLAY.bat` | `C:\DayZServer\PLAY.bat` |
 | `config/serverDZ.cfg` | `C:\DayZServer\serverDZ.cfg` |
 | `config/db/types.xml` | `C:\DayZServer\mpmissions\dayzOffline.chernarusplus\db\types.xml` |
 | `config/db/globals.xml` | `C:\DayZServer\mpmissions\dayzOffline.chernarusplus\db\globals.xml` |
@@ -242,17 +243,48 @@ E **nenhuma** linha `SCRIPT (E):` ou `Can't compile`.
 
 ## 8. Conectar o cliente
 
-1. No cliente, ative **os mesmos 39 mods** (DayZ Launcher → aba *Mods*).
-   A ordem não importa no cliente, mas o conjunto precisa ser idêntico.
-2. Inicie o jogo com:
+**Use o `PLAY.bat`.** Ele lê o `MODS.txt`, monta o `-mod=` com o caminho
+absoluto de cada mod do servidor e conecta em `127.0.0.1:2302`:
 
 ```text
--connect=127.0.0.1 -port=2302
+Duplo clique em PLAY.bat
 ```
 
-   Ou abra o navegador de servidores → aba **LAN** → `Apocalipse`.
+> ⚠️ **Não abra o DayZ pela Steam** (nem só com `-connect=` nas opções de
+> inicialização). Sem `-mod=`, o cliente carrega o jogo **vanilla** e acontece
+> o pior sintoma possível: você **anda**, mas **nenhuma ação funciona** — não
+> abre porta, não bebe água, não come. É a causa nº 1 de "servidor bugado".
 
-3. O primeiro login pode demorar ~1 min (o servidor gera o personagem).
+Se o cliente estiver em **outra máquina**, edite no `PLAY.bat`:
+
+```bat
+set "serverIp=192.168.8.7"
+set "dayzExe=C:\Program Files (x86)\Steam\steamapps\common\DayZ\DayZ_x64.exe"
+```
+
+e copie as 39 pastas `@...` para essa máquina (ou use caminho de rede).
+
+### Como saber se o cliente carregou os mods
+
+No `script_*.log` do cliente
+(`%LOCALAPPDATA%\DayZ\script_<data>.log`) deve aparecer:
+
+```text
+Module: Game;    loaded 1267x files; 3647x classes
+Module: World;   loaded 4450x files; 11196x classes
+Module: Mission; loaded  788x files; 1751x classes
+```
+
+Se aparecer **440 / 2322 / 219**, o cliente está vanilla — feche e use o
+`PLAY.bat`. A ordem no cliente não importa; o **conjunto** precisa ser igual.
+
+### Sem o PLAY.bat
+
+Se preferir o DayZ Launcher: ative os 39 mods na aba *Mods*, inicie o jogo e
+use **Direct Connect** → `127.0.0.1:2302`. O importante é que o cliente suba
+com os mods.
+
+O primeiro login pode demorar ~1 min (o servidor gera o personagem).
 
 > Se o cliente estiver em outra máquina, libere a porta **2302/UDP** no firewall
 > e use o IP da máquina do servidor.

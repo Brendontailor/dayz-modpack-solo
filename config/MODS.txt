@@ -1,0 +1,78 @@
+# =====================================================================
+#  MODPACK - ORDEM DE CARREGAMENTO (DayZ 1.30)
+#  Ordem: dependencias primeiro, conteudo por cima.
+#  Linhas com # sao ignoradas pelo START.bat.
+#  NAO apague nenhuma pasta: para desativar, comente a linha.
+# =====================================================================
+
+# --- Base / frameworks ---
+@CF
+@Dabs Framework
+
+# --- Expansion (Bundle = Core + BaseBuilding + Market + Vehicles + Quests + AI + Groups...) ---
+@DayZ-Expansion-Bundle
+@DayZ-Expansion-Licensed
+
+# --- RaG (dependencias nesta ordem) ---
+@RaG_Core
+@RaG_BaseItems
+@RaG_Vehicle_Pack
+
+# --- Construcao ---
+@BaseBuildingPlus
+@BuilderItems
+@Breachingcharge
+
+# --- Mapas / HUD ---
+@Basic Map
+
+# --- Armas, roupas e equipamento ---
+@Advanced Weapon Scopes
+@MMG - Mightys Military Gear
+@TLH Item Pack
+@Forward Operator Gear
+@Generic_Gunplay
+@BS KeyRoom
+
+# --- Sobrevivencia / utilidades ---
+@CookZ
+@KM_BetterFishing
+@ProjectHope Survivor Backpack
+@AmmoStackBullet
+@Auto Stack - Proper
+@Combinable Items
+@BetterHarvest
+@AutoCarFlip
+@Bed-Respawning
+@HeliWreckNoLoot
+@Vehicle3PP
+@JS Storage
+
+# --- Mundo / pontos de interesse ---
+@ApocalipticCityChernarus
+@Secret Trader. Chernarus map. mapping
+
+# --- Bandeira instantanea (precisa vir DEPOIS do Expansion para o override valer) ---
+@Instant Flag
+
+# --- Zumbis / eventos ---
+@PvZmoD_CustomisableZombies
+@Beetle Zombie pack
+@SF Zombie Horde Event
+
+# --- Bosses e missoes ---
+@MI Raid Boss
+@Dynamic AI Missions for DayZ Expansion AI
+@Dynamic Scavenging
+
+# --- Admin ---
+@VPPAdminTools
+
+# =====================================================================
+#  DESATIVADOS DE PROPOSITO (as pastas continuam no disco)
+# =====================================================================
+# @DayZ-Expansion-Core          -> ja vem dentro do Bundle (duplicaria addons/scripts)
+# @DayZ-Expansion-BaseBuilding  -> ja vem dentro do Bundle
+# @DayZ-Expansion-Market        -> ja vem dentro do Bundle
+# @DayZ-Expansion-Vehicles      -> ja vem dentro do Bundle
+# @MiniMap                      -> redundante com o Basic Map (dois mapas = mais HUD/FPS)

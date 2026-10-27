@@ -1,0 +1,62 @@
+[
+  {
+    "Name": "BOSS - Chernarus Butcher",
+    "Pos": [6351.63, 0.0, 3020.01],
+    "Icon": "BasicMap\\gui\\images\\warn.paa",
+    "Is3DMarker": false,
+    "Colour": [200, 40, 40],
+    "Alpha": 240,
+    "HideOnPanel": false,
+    "HideOnMap": false,
+    "MaxRenderDistance": -1.0,
+    "MinRenderDistance": -1.0,
+    "MapToShowOn": "",
+    "CanEdit": false,
+    "Group": "BASICMAP_SERVER"
+  },
+  {
+    "Name": "BOSS - Altar Signal Brute",
+    "Pos": [8144.6, 0.0, 9132.55],
+    "Icon": "BasicMap\\gui\\images\\warn.paa",
+    "Is3DMarker": false,
+    "Colour": [200, 40, 40],
+    "Alpha": 240,
+    "HideOnPanel": false,
+    "HideOnMap": false,
+    "MaxRenderDistance": -1.0,
+    "MinRenderDistance": -1.0,
+    "MapToShowOn": "",
+    "CanEdit": false,
+    "Group": "BASICMAP_SERVER"
+  },
+  {
+    "Name": "BOSS - Severograd Bear King",
+    "Pos": [14162.3, 0.0, 15043.3],
+    "Icon": "BasicMap\\gui\\images\\warn.paa",
+    "Is3DMarker": false,
+    "Colour": [200, 40, 40],
+    "Alpha": 240,
+    "HideOnPanel": false,
+    "HideOnMap": false,
+    "MaxRenderDistance": -1.0,
+    "MinRenderDistance": -1.0,
+    "MapToShowOn": "",
+    "CanEdit": false,
+    "Group": "BASICMAP_SERVER"
+  },
+  {
+    "Name": "BOSS - Tisy Blacksite Overlord",
+    "Pos": [556.594, 0.0, 13671.7],
+    "Icon": "BasicMap\\gui\\images\\warn.paa",
+    "Is3DMarker": false,
+    "Colour": [200, 40, 40],
+    "Alpha": 240,
+    "HideOnPanel": false,
+    "HideOnMap": false,
+    "MaxRenderDistance": -1.0,
+    "MinRenderDistance": -1.0,
+    "MapToShowOn": "",
+    "CanEdit": false,
+    "Group": "BASICMAP_SERVER"
+  }
+]

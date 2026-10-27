@@ -1,0 +1,54 @@
+# =====================================================================
+#  DayZ Server / mods / logs / saves  (NAO versionar)
+# =====================================================================
+
+# Servidor e bibliotecas
+DayZServer_x64.exe
+*.exe
+*.dll
+steam_appid.txt
+dta/
+keys/
+addons/
+_bc/
+
+# Mods (conteudo de terceiros, Steam Workshop)
+@*/
+@*/
+*.pbo
+*.pbo.*
+*.bisign
+*.bikey
+*.ebo
+
+# Logs e crash dumps
+*.log
+*.RPT
+*.ADM
+*.mdmp
+crash_*
+error_*
+script_*
+profiles/BattlEye/
+profiles/*/logs/
+
+# Persistencia (save do mundo / personagens)
+mpmissions/**/storage_1/
+mpmissions/**/expansion/
+mpmissions/**/CookZ/
+mpmissions/**/env/
+profiles/Users/
+profiles/DataCache/
+profiles/WebApiLog/
+
+# Backups e arquivos temporarios
+_backup_*/
+_tmp/
+tmp/
+__pycache__/
+*.pyc
+*.zip
+*.7z
+*.rar
+Thumbs.db
+desktop.ini

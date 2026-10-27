@@ -1,0 +1,70 @@
+{
+  "enabled": 1,
+  "debugLogging": 0,
+  "updateIntervalSeconds": 2,
+  "chatAnnouncementsEnabled": 1,
+  "screenAnnouncementsEnabled": 1,
+  "screenAnnouncementSeconds": 6,
+  "chatPrefix": "[Boss]",
+  "bossSpawnedMessage": "%bossName% is alive.",
+  "bossKilledMessage": "%bossName% defeated. Respawn: %respawnTime%.",
+  "bossKilledLocalMessage": "%bossName% defeated. Top: %playerName%. Respawn: %respawnTime%.",
+  "damageBlockedMessage": "You must be within %radius%m of %bossName% to damage it.",
+  "rewardChestEffectsEnabled": 1,
+  "discordWebhook": {
+    "enabled": 0,
+    "url": "",
+    "reportStatusOnServerStart": false,
+    "bossAliveMessage": "%bossName% is alive.",
+    "bossDeadMessage": "%bossName% is dead."
+  },
+  "persistenceEnabled": 0,
+  "persistBossHealth": 1,
+  "persistRespawnTimers": 1,
+  "persistenceSaveIntervalSeconds": 30,
+  "raidStatusUiEnabled": 1,
+  "raidStatusUiHotkey": "NUMPAD1",
+  "raidStatusUiPublic": 1,
+  "raidStatusUiAllowedIds": [],
+  "raidStatusUiAllowedNames": [],
+  "raidBossHealthBarEnabled": 1,
+  "damageDebugEnabled": 0,
+  "damageDebugChat": 0,
+  "damageDebugScreen": 0,
+  "damageDebugShowToAttacker": 1,
+  "damageDebugShowToVictim": 1,
+  "currency": {
+    "enabled": 0,
+    "maxCurrencyStacks": 10,
+    "denominations": [
+      {
+        "className": "currency_class_name",
+        "value": 100
+      },
+      {
+        "className": "currency_class_name",
+        "value": 50
+      },
+      {
+        "className": "currency_class_name",
+        "value": 20
+      },
+      {
+        "className": "currency_class_name",
+        "value": 10
+      },
+      {
+        "className": "currency_class_name",
+        "value": 5
+      },
+      {
+        "className": "currency_class_name",
+        "value": 2
+      },
+      {
+        "className": "currency_class_name",
+        "value": 1
+      }
+    ]
+  }
+}
